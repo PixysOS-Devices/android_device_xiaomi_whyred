@@ -23,12 +23,16 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_n_mr1.mk
 $(call inherit-product, device/xiaomi/whyred/device.mk)
 
 # Inherit from custom vendor
-$(call inherit-product, vendor/MiuiCamera/config.mk)
+$(call inherit-product, vendor/xiaomi/MiuiCamera/config.mk)
 
-# Inherit some common Mokee stuff.
-$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
+# Inherit some common Pixys stuff.
+$(call inherit-product, vendor/pixys/config/common_full_phone.mk)
 
-PRODUCT_NAME := lineage_whyred
+# Boot animation
+TARGET_BOOT_ANIMATION_RES := 1080
+
+## Device identifier. This must come after all inclusions
+PRODUCT_NAME := pixys_whyred
 PRODUCT_BRAND := Xiaomi
 PRODUCT_DEVICE := whyred
 PRODUCT_MANUFACTURER := Xiaomi
@@ -38,14 +42,10 @@ PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
     TARGET_DEVICE="whyred" \
+    DEVICE_MAINTAINER="Syed Sajid (syedsajid)" \
     PRODUCT_NAME="whyred" \
     PRIVATE_BUILD_DESC="whyred-user 9 PKQ1.180904.001 V10.3.1.0.PEICNXM release-keys"
 
 BUILD_FINGERPRINT := "xiaomi/whyred/whyred:9/PKQ1.180904.001/V10.3.1.0.PEICNXM:user/release-keys"
 
 TARGET_VENDOR := Xiaomi
-
-# OTA
-PRODUCT_PROPERTY_OVERRIDES += \
-    lineage.updater.uri=https://raw.githubusercontent.com/xiaomeme-whyred/OTA/master/lineage.json
-
